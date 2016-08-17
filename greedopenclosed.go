@@ -38,12 +38,12 @@ func computeOccurrencies(dice []int) Occurrencies {
 	return occurrencies
 }
 
-func nItemsRule(toFind, score, nrOfItems int) func (int, Occurrencies) (int, Occurrencies) {
-	return func (previousScore int, occurrencies Occurrencies) (int, Occurrencies) {
+func nItemsRule(toFind, scoreToAdd, nrOfItems int) func (int, Occurrencies) (int, Occurrencies) {
+	return func (score int, occurrencies Occurrencies) (int, Occurrencies) {
 		for ; occurrencies[toFind] >= nrOfItems; {
-			previousScore = previousScore + score
+			score = score + scoreToAdd
 			occurrencies.remove(nrOfItems, toFind)
 		}
-		return previousScore, occurrencies
+		return score, occurrencies
 	} 
 }
