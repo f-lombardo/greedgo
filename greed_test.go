@@ -5,7 +5,15 @@ import (
 )
 
 
-func TestGreed(t *testing.T) {
+func TestGreedMatching(t *testing.T) {
+	executeFor(t, GreedMatching)
+}
+
+func TestGreedOpenClosed(t *testing.T) {
+	executeFor(t, GreedOpenClosed)
+}
+
+func executeFor(t *testing.T, greedFunction func (dice []int) int) {
 	cases := []struct {expected int; input []int} {	
 		{1000, []int{1, 1, 1, 6, 6,}},
 		{1200, []int{1, 1, 1, 1, 1,}},
@@ -19,7 +27,7 @@ func TestGreed(t *testing.T) {
 	}
 
 	for _, aCase := range cases {
-		actual := Greed(aCase.input)
+		actual := greedFunction(aCase.input)
 		if actual != aCase.expected {
 			t.Errorf("Greed(%d) == %d, expected %d", aCase.input, actual, aCase.expected)
 		}

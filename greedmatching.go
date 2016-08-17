@@ -21,7 +21,7 @@ func (roll Roll) startsWith(anotherRoll ...int) bool {
 	return true
 }
 
-func Greed(dice []int) int {
+func GreedMatching(dice []int) int {
 	sort.Ints(dice)
 	score := 0
 	for ; len(dice) > 0; {
