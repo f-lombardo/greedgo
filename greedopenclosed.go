@@ -1,12 +1,14 @@
 //Greed dice game kata.
 package greedgo
 
-import "math"
-
 type Occurrencies map[int]int
 
 func (occurrencies Occurrencies) remove (times, number int) {
-	occurrencies[number] = int(math.Max(float64(occurrencies[number] - times), float64(0)))
+	if occurrencies[number] > times {
+		occurrencies[number] = occurrencies[number] - times
+	} else {
+		occurrencies[number] = 0
+	}
 }
 
 
